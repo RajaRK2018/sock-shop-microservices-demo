@@ -1,0 +1,2279 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 34,
+  "iteration": 1638447157700,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "SUM by (container, method) (rate(request_duration_seconds_count{namespace=\"$namespace\", container=\"$service\", endpoint=\"web\", route!~\"health|metrics\"}[$AvgOver]))",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{container}}-{{method}}",
+          "refId": "A"
+        }
+      ],
+      "title": "SERVICE REQUEST RATE",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "SUM by (container, method, status_code) (rate(request_duration_seconds_count{namespace=\"$namespace\", container=\"$service\", status_code=~\"[4|5].*\", endpoint=\"web\", route!~\"health|metrics\"}[$AvgOver]))",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{container}}-{{method}}-{{status_code}}",
+          "refId": "A"
+        }
+      ],
+      "title": "SERVICE FAILURE RATE",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 30,
+      "maxDataPoints": null,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "AVG by (container, method) (rate(request_duration_seconds_sum{namespace=\"$namespace\", container=\"$service\", status_code=~\"[2|3].*\", endpoint=\"web\", route!~\"health|metrics\"}[$AvgOver]) / rate(request_duration_seconds_count{namespace=\"$namespace\", container=\"$service\", status_code=~\"[2|3].*\", endpoint=\"web\", route!~\"health|metrics\"}[$AvgOver]))",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{container}}-{{method}}",
+          "refId": "A"
+        }
+      ],
+      "title": "SERVICE RESPONSE TIME (AVG)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 8,
+      "maxDataPoints": null,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "histogram_quantile(($percentile/100), sum(rate(request_duration_seconds_bucket{namespace=\"$namespace\", container=\"$service\", status_code=~\"[2|3].*\", endpoint=\"web\", route!~\"health|metrics\"}[$AvgOver])) by (le))",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "$percentile Percentile",
+          "refId": "A"
+        }
+      ],
+      "title": "SERVICE RESPONSE TIME (PERCENTILE)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "semi-dark-red",
+                  "index": 0
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "from": 1,
+                "result": {
+                  "color": "semi-dark-green",
+                  "index": 1
+                },
+                "to": 2
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 3,
+                "result": {
+                  "color": "semi-dark-orange",
+                  "index": 2
+                },
+                "to": 4
+              },
+              "type": "range"
+            }
+          ],
+          "max": 5,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 16
+      },
+      "id": 10,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "kube_deployment_status_replicas{deployment=\"$service\"}",
+          "interval": "",
+          "intervalFactor": 10,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Active Pod Count (Selected Service)",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "semi-dark-red",
+                  "index": 0
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "from": 1,
+                "result": {
+                  "color": "semi-dark-green",
+                  "index": 1
+                },
+                "to": 2
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 3,
+                "result": {
+                  "color": "semi-dark-orange",
+                  "index": 2
+                },
+                "to": 4
+              },
+              "type": "range"
+            }
+          ],
+          "max": 3,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 6,
+        "y": 16
+      },
+      "id": 20,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (container) (kube_pod_container_status_running{container=\"$service\"})",
+          "interval": "",
+          "legendFormat": "Running",
+          "refId": "A"
+        }
+      ],
+      "title": "Pod Running Series (Selected Service)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "semi-dark-red",
+                  "index": 0
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "from": 1,
+                "result": {
+                  "color": "semi-dark-green",
+                  "index": 1
+                },
+                "to": 2
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 3,
+                "result": {
+                  "color": "semi-dark-orange",
+                  "index": 2
+                },
+                "to": 4
+              },
+              "type": "range"
+            }
+          ],
+          "max": 3,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 12,
+        "y": 16
+      },
+      "id": 19,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (pod)(rate(kube_pod_container_status_restarts_total{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\"}[5m]))",
+          "interval": "",
+          "legendFormat": "Pod Restarts",
+          "refId": "A"
+        }
+      ],
+      "title": "Pod Restarts (Selected Service)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "semi-dark-red",
+                  "index": 0
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "from": 1,
+                "result": {
+                  "color": "semi-dark-green",
+                  "index": 1
+                },
+                "to": 2
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 3,
+                "result": {
+                  "color": "semi-dark-orange",
+                  "index": 2
+                },
+                "to": 4
+              },
+              "type": "range"
+            }
+          ],
+          "max": 3,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "Running"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 18,
+        "y": 16
+      },
+      "id": 25,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (container) (kube_pod_container_status_running{container=\"$service\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Running",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (container) (kube_pod_container_status_ready{container=\"$service\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Ready",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (container) (kube_pod_container_status_waiting{container=\"$service\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Waiting",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (container) (kube_pod_container_status_terminated{container=\"$service\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Terminated",
+          "refId": "D"
+        }
+      ],
+      "title": "Pod Status (Selected Service)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 25
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (pod) (rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\"}[$AvgOver]))",
+          "interval": "",
+          "legendFormat": "CPU Usage",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (pod) (cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "CPU Requests",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (pod) (cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "CPU Limit",
+          "refId": "C"
+        }
+      ],
+      "title": "Pod CPU Usage (Avg)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "Memory Usage"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 25
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (pod) (rate(container_cpu_cfs_throttled_seconds_total{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\"}[$AvgOver]))",
+          "interval": "",
+          "legendFormat": "CPU Throttles",
+          "refId": "A"
+        }
+      ],
+      "title": "Pod CPU Throttles",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 35
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (pod) (rate(container_memory_working_set_bytes{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\"}[$AvgOver]))",
+          "interval": "",
+          "legendFormat": "Memory Usage",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (pod) (cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Memory Requests",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (pod) (cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Memory Limit",
+          "refId": "C"
+        }
+      ],
+      "title": "Pod Memory Usage (Avg)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 35
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (pod) (rate(container_memory_failures_total{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\"}[$AvgOver]))",
+          "interval": "",
+          "legendFormat": "Memory Failure",
+          "refId": "A"
+        }
+      ],
+      "title": "Pod Memory Failures",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "Write Throughput"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 44
+      },
+      "id": 16,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(container_fs_reads_bytes_total{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\"}[$AvgOver]) + rate(container_fs_writes_bytes_total{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\"}[$AvgOver])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Overall Throughput",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "irate(container_fs_reads_bytes_total{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Read Throughput",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "irate(container_fs_writes_bytes_total{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Write Throughput",
+          "refId": "C"
+        }
+      ],
+      "title": "Pod FS Throughput (Avg)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "semi-dark-green",
+                  "index": 0
+                },
+                "to": 60
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 60,
+                "result": {
+                  "color": "semi-dark-orange",
+                  "index": 1
+                },
+                "to": 80
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 80,
+                "result": {
+                  "color": "semi-dark-red",
+                  "index": 2
+                },
+                "to": 100
+              },
+              "type": "range"
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 53
+      },
+      "id": 21,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(jvm_memory_bytes_used{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", area=\"heap\"})*100/sum(jvm_memory_bytes_max{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", area=\"heap\"})",
+          "interval": "",
+          "legendFormat": "Heap Utilization %",
+          "refId": "A"
+        }
+      ],
+      "title": "Pod JVM Heap Utilization %",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 53
+      },
+      "id": 24,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "jvm_memory_pool_bytes_used{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", pool=\"G1 Eden Space\"}",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "G1 Eden Space Used",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "jvm_memory_pool_bytes_max{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", pool=\"G1 Eden Space\"}",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "G1 Eden Space Max",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "jvm_memory_pool_bytes_used{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", pool=\"G1 Old Gen\"}",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "G1 Old Gen Used",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "jvm_memory_pool_bytes_max{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", pool=\"G1 Old Gen\"}",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "G1 Old Gen Max",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "jvm_memory_pool_bytes_used{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", pool=\"G1 Survivor Space\"}",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "G1 Survivor Space Used",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "jvm_memory_pool_bytes_max{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", pool=\"G1 Survivor Space\"}",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "G1 Survivor Space Max",
+          "refId": "F"
+        },
+        {
+          "exemplar": true,
+          "expr": "jvm_memory_pool_bytes_used{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", pool=\"Metaspace\"}",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Metaspace Used",
+          "refId": "G"
+        },
+        {
+          "exemplar": true,
+          "expr": "jvm_memory_pool_bytes_max{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", pool=\"Metaspace\"}",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Metaspace Max",
+          "refId": "H"
+        },
+        {
+          "exemplar": true,
+          "expr": "jvm_memory_pool_bytes_used{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", pool=\"Code Cache\"}",
+          "hide": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Code Cache Used",
+          "refId": "I"
+        },
+        {
+          "exemplar": true,
+          "expr": "jvm_memory_pool_bytes_max{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", pool=\"Code Cache\"}",
+          "hide": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Code Cache Max",
+          "refId": "J"
+        },
+        {
+          "exemplar": true,
+          "expr": "jvm_memory_pool_bytes_used{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", pool=\"Compressed Class Space\"}",
+          "hide": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Compressed Class Space Used",
+          "refId": "K"
+        },
+        {
+          "exemplar": true,
+          "expr": "jvm_memory_pool_bytes_max{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", pool=\"Compressed Class Space\"}",
+          "hide": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Compressed Class Space Max",
+          "refId": "L"
+        }
+      ],
+      "title": "Pod JVM Heap Pool Usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 63
+      },
+      "id": 26,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (pod) (rate(jvm_gc_collection_seconds_count{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", gc=\"G1 Young Generation\"}[$AvgOver]))",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Young Gen GC Rate",
+          "refId": "A"
+        }
+      ],
+      "title": "Young Gen GC RATE",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 63
+      },
+      "id": 27,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (pod) (rate(jvm_gc_collection_seconds_count{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", gc=\"G1 Old Generation\"}[$AvgOver]))",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Old Gen GC Rate",
+          "refId": "A"
+        }
+      ],
+      "title": "Old Gen GC RATE",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 71
+      },
+      "id": 28,
+      "maxDataPoints": null,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "AVG by (pod) \n(rate(jvm_gc_collection_seconds_sum{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", gc=\"G1 Young Generation\"}[$AvgOver]) / rate(jvm_gc_collection_seconds_count{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", gc=\"G1 Young Generation\"}[$AvgOver]))",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Young Gen GC Time",
+          "refId": "A"
+        }
+      ],
+      "title": "Young Gen GC Time (AVG)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 71
+      },
+      "id": 29,
+      "maxDataPoints": null,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "AVG by (pod) \n(rate(jvm_gc_collection_seconds_sum{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", gc=\"G1 Old Generation\"}[$AvgOver]) / rate(jvm_gc_collection_seconds_count{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", gc=\"G1 Old Generation\"}[$AvgOver]))",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Old Gen GC Time",
+          "refId": "A"
+        }
+      ],
+      "title": "Young Gen GC Time (AVG)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "semi-dark-green",
+                  "index": 0
+                },
+                "to": 60
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 60,
+                "result": {
+                  "color": "semi-dark-orange",
+                  "index": 1
+                },
+                "to": 80
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 80,
+                "result": {
+                  "color": "semi-dark-red",
+                  "index": 2
+                },
+                "to": 100
+              },
+              "type": "range"
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 79
+      },
+      "id": 22,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(jvm_memory_bytes_used{namespace=\"$namespace\", container=\"$service\", pod=\"$pod\", area=\"nonheap\"})",
+          "interval": "",
+          "legendFormat": "Non Heap Usage",
+          "refId": "A"
+        }
+      ],
+      "title": "Pod JVM Non Heap Usage",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 31,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "sock-shop",
+          "value": "sock-shop"
+        },
+        "datasource": null,
+        "definition": "label_values(request_duration_seconds_count{endpoint=\"web\"}, namespace)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "namespace",
+        "options": [],
+        "query": {
+          "query": "label_values(request_duration_seconds_count{endpoint=\"web\"}, namespace)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "carts",
+          "value": "carts"
+        },
+        "datasource": null,
+        "definition": "label_values(request_duration_seconds_count{namespace=\"$namespace\", endpoint=\"web\"}, container)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "service",
+        "options": [],
+        "query": {
+          "query": "label_values(request_duration_seconds_count{namespace=\"$namespace\", endpoint=\"web\"}, container)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "carts-b4d4ffb5c-5ppbv",
+          "value": "carts-b4d4ffb5c-5ppbv"
+        },
+        "datasource": null,
+        "definition": "label_values(request_duration_seconds_count{namespace=\"$namespace\", service=\"$service\", endpoint=\"web\"}, pod)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "pod",
+        "options": [],
+        "query": {
+          "query": "label_values(request_duration_seconds_count{namespace=\"$namespace\", service=\"$service\", endpoint=\"web\"}, pod)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "1m",
+          "value": "1m"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "AvgOver",
+        "options": [
+          {
+            "selected": true,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "5m",
+            "value": "5m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "60m",
+            "value": "60m"
+          }
+        ],
+        "query": "1m,5m,10m,30m,60m",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "90",
+          "value": "90"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "percentile",
+        "options": [
+          {
+            "selected": false,
+            "text": "50",
+            "value": "50"
+          },
+          {
+            "selected": false,
+            "text": "75",
+            "value": "75"
+          },
+          {
+            "selected": true,
+            "text": "90",
+            "value": "90"
+          },
+          {
+            "selected": false,
+            "text": "95",
+            "value": "95"
+          },
+          {
+            "selected": false,
+            "text": "99",
+            "value": "99"
+          }
+        ],
+        "query": "50,75,90,95,99",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Sock-Shop Performance Dashboard",
+  "uid": "x_trm1t7k",
+  "version": 227
+}
